@@ -1,1 +1,4 @@
-# iml-hackathon-2019
+# ML Hackathon - HUJI
+
+Team members:
+Shahar Nahum, Or Mizrahi, Daniel __ , Alon Emanuel
