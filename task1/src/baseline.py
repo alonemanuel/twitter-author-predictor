@@ -1,10 +1,11 @@
 from sklearn.feature_extraction.text import  CountVectorizer
 
-class baseline:
+class Baseline:
 	def __init__(self, X_train, y_train):
 		self.X_train = self.preprocess(X_train)
 		self.y_train = y_train
 		self.train()
+
 
 	def preprocess(self, X):
 		'''
