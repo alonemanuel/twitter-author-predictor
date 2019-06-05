@@ -1,4 +1,5 @@
 from sklearn.model_selection import train_test_split
+import numpy as np
 
 class parser:
 
@@ -9,5 +10,6 @@ class parser:
 		pass
 
 	def train_test_split(self):
+		pass
 		
 
