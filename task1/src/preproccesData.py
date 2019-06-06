@@ -50,7 +50,6 @@ class TweetsPreProcessor:
         number_of_hastags_per_tweet = []
         number_of_mentions_per_tweet = []
         word_counts_per_tweet = []
-        lang_per_tweet = []
         link_exist_per_tweet = []
         char_count_per_tweet = []
         all_hashtags = []
