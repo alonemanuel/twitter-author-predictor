@@ -1,16 +1,15 @@
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score
-from sklearn.multioutput import ClassifierChain
+from sklearn.neighbors import KNeighborsClassifier
 
 from garcon import Garcon
 from learners.abstract_learner import AbstractLearner
+
 gc = Garcon()
 
-class LogisticReg(AbstractLearner):
+class KNN(AbstractLearner):
 	def __init__(self, X_train, y_train):
 		super().__init__(X_train, y_train)
-		self.model = LogisticRegression()
-		# self.model = ClassifierChain(LogisticRegression())
+		self.model = KNeighborsClassifier()
 		self.fit()
 
 	def fit(self):
@@ -26,3 +25,4 @@ class LogisticReg(AbstractLearner):
 		y_pred = self.classify(X)
 		print(confusion_matrix(y, y_pred))
 		print(accuracy_score(y, y_pred))
+
