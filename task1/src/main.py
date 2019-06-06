@@ -8,7 +8,7 @@ from task1.src.learners.l_d_a import LDA
 from task1.src.learners.knn import KNN
 from task1.src.learners.learner_analyzer import LearnerAnalyzer
 from task1.src.learners.logistic_regression import LogisticReg
-from task1.src.preprocessor import *
+from task1.src.preprocessor2 import *
 
 from sklearn.pipeline import Pipeline
 
