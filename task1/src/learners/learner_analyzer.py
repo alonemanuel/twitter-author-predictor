@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 
 gc = Garcon()
-TRAIN_RATIO = 0.8
+TRAIN_RATIO = 0.85
 STEP_SIZE=5000
 
 class LearnerAnalyzer:
