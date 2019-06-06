@@ -1,10 +1,8 @@
-from abc import ABC, abstractmethod
 
 from sklearn.metrics import confusion_matrix, accuracy_score
 
 from task1.src.garcon import Garcon
-from task1.src.preprocessor import Preprocessor
-import matplotlib.pyplot as plt
+
 
 gc = Garcon()
 

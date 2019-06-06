@@ -17,8 +17,8 @@ from task1.src.learners.l_d_a import LDA
 from task1.src.learners.knn import KNN
 from task1.src.learners.learner_analyzer import LearnerAnalyzer
 from task1.src.learners.logistic_regression import LogisticReg
-from task1.src.preprocessor2 import *
-
+from task1.src.dataGetter import *
+import numpy as np
 from sklearn.pipeline import Pipeline
 
 
@@ -32,7 +32,7 @@ def main():
 	'''
 	gc.enter_func()
 
-	prep = Preprocessor()
+	prep = DataGetter()
 	X, y = prep.get_train_data()
 	X_train, y_train, X_test, y_test = prep.train_test_split(X, y)
 
