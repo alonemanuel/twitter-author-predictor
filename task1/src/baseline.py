@@ -19,7 +19,11 @@ class Baseline:
 	pat3 = r'^https?:\/\/.*[\r\n]*'
 	pat_num = r'\b\d+'
 	pat_ing = r'ing\b'
-	combined_pat = r'|'.join((pat1, pat2, pat3, pat_num, pat_ing))
+	pat_test_a = r'[\w]*a[\w]*'
+	pat_test_e = r'[\w]*e[\w]*'
+	pat_test_o = r'[\w]*o[\w]*'
+	combined_pat = r'|'.join((pat1, pat2, pat3, pat_num, pat_ing, pat_test_a,
+							  pat_test_e, pat_test_o))
 
 	def __init__(self, X_train, y_train):
 		'''
@@ -28,10 +32,10 @@ class Baseline:
 		'''
 		gc.enter_func()
 		self.X_train = self.preprocess(X_train)
-		gc.log(self.X_train.shape)
-		self.y_train = y_train
+		self.y_train = y_train.astype(int)
 		self.model = svm.SVC(gamma='scale', decision_function_shape='ovo')
 		self.train()
+		gc.log('Done train')
 
 	def clean(self, str):
 		'''
@@ -55,13 +59,17 @@ class Baseline:
 
 		vectorizer = CountVectorizer()
 		X_vecd = vectorizer.fit_transform(X)
+		print(X_vecd.shape)
 		print(vectorizer.get_feature_names())
 		return X_vecd.toarray()
 
 	def train(self):
 		gc.enter_func()
-		plt.boxplot(self.y_train)
-		plt.show()
+		print(self.y_train)
+		self.model.fit(self.X_train, self.y_train)
+
+		# plt.boxplot(self.y_train)
+		# plt.show()
 
 	# self.model.fit(self.X_train, self.y_train)
 
