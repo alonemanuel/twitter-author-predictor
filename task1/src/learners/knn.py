@@ -2,11 +2,11 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 
 from task1.src.garcon import Garcon
-from task1.src.learners.abstract_learner import AbstractLearner
+from task1.src.learners.abstract_learner import LearnerWrapper
 
 gc = Garcon()
 
-class KNN(AbstractLearner):
+class KNN(LearnerWrapper):
 	def __init__(self, X_train, y_train):
 		super().__init__(X_train, y_train)
 		self.model = KNeighborsClassifier()
