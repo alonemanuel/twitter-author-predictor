@@ -14,7 +14,7 @@ nltk.download('stopwords')
 
 NUM_OF_CLASSES = 10
 IS_TFIDF = False
-TRAIN_RATIO = 0.85
+TRAIN_RATIO = 0.5
 DATA_DIR_PATH = 'tweets_data'
 CSV_EXT = ".csv"
 
