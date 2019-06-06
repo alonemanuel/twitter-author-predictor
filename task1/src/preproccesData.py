@@ -116,6 +116,7 @@ class TweetsPreProcessor:
 					if lexem in person:
 						lexems_for_person[index, i] += 1
 
+
 		for i in range(10):
 			name = 'hashtags %f' %i
 			data_from_tweets[name] = hashtags_for_person[:, i]
@@ -126,6 +127,7 @@ class TweetsPreProcessor:
 			name = 'lexems %f' % i
 			data_from_tweets[name] = lexems_for_person[:, i]
 
+		data_from_tweets.to_csv('testing_df_from_tweets.csv')
 
 		# bow = self.vectorizer.transform(tweets).toarray()
 		# features = np.column_stack((data_from_tweets.values, bow))
