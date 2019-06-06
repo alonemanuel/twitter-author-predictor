@@ -19,9 +19,13 @@ class TweetsPreProcessor:
 	def __init__(self, tweets):
 		self.vectorizer = CountVectorizer(ngram_range=(1, 3), max_features=5000,
 										  binary=False)
+		self.most_common_hashtags = []
+		self.most_common_mentions = []
+		self.most_common_lexemes = []
+
 		self.vectorizer.fit(tweets)
 
-	def processTweets(self, tweets, labels):
+	def processTweets(self, tweets, labels=None):
 		"""
         Gets the tweets, spits the data
         :param tweets:
@@ -83,17 +87,42 @@ class TweetsPreProcessor:
 		data_from_tweets['Char count'] = char_count_per_tweet
 		# data_from_tweets['Language'] = lang_per_tweet
 
-		most_common_hashtags = self.get_most_common_words(all_hashtags, labels)
-		most_common_mentions = self.get_most_common_words(all_mentions, labels)
-		most_common_lexemes = self.get_most_common_words(proccesed_tweets, labels,
-														 100)
+		if (labels):
+			self.most_common_hashtags = self.get_most_common_words(
+					all_hashtags, labels)
+			self.most_common_mentions = self.get_most_common_words(
+					all_mentions, labels)
+			self.most_common_lexemes = self.get_most_common_words(
+					proccesed_tweets,
+														 labels, 100)
+
+		hashtags_for_person = [[0]* len(tweets) * 10]
+		for index, tweet in enumerate(tweets):
+			for hashtag in all_hashtags[index]:
+				for i,person in enumerate(self.most_common_hashtags):
+					if hashtag in person:
+						hashtags_for_person[i][index] +=1
+
+		data_from_tweets['hashtags 0'] = hashtags_for_person[0]
+		data_from_tweets['hashtags 1'] = hashtags_for_person[1]
+		data_from_tweets['hashtags 2'] = hashtags_for_person[2]
+		data_from_tweets['hashtags 3'] = hashtags_for_person[3]
+		data_from_tweets['hashtags 4'] = hashtags_for_person[4]
+		data_from_tweets['hashtags 5'] = hashtags_for_person[5]
+		data_from_tweets['hashtags 6'] = hashtags_for_person[6]
+		data_from_tweets['hashtags 7'] = hashtags_for_person[7]
+		data_from_tweets['hashtags 8'] = hashtags_for_person[8]
+		data_from_tweets['hashtags 9'] = hashtags_for_person[9]
+
+
+
+
+
+
 		bow = self.vectorizer.transform(tweets).toarray()
-		# print(bow.shape)
-		# print(data_from_tweets.values.shape)
 		features = np.column_stack((data_from_tweets.values, bow))
 		return features
 
-		return data_from_tweets, most_common_hashtags, most_common_mentions, most_common_lexemes
 
 	def normalize_lexical_words(self, tweet):
 		'''
@@ -126,14 +155,15 @@ class TweetsPreProcessor:
 			for word in words_lst:
 				most_common[label][word] += 1
 
-			# creating an intersection of all the word's sets
+		# creating an intersection of all the word's sets
 		intersections = [dic.keys() for dic in most_common]
-		intersections = ft.reduce(lambda d1, d2: set(d1) & set(d2), intersections)
+		intersections = ft.reduce(lambda d1, d2: set(d1) & set(d2),
+								  intersections)
 
 		# for each label filter the words that are not in the intersection
 		for label, dic in enumerate(most_common):
 			most_common[label] = list(
-				filter(lambda x: x[0] not in intersections, dic.items()))
+					filter(lambda x: x[0] not in intersections, dic.items()))
 
 		# for each label sort it's vale by thier appreance in decending order
 		for i, lst in enumerate(most_common):
@@ -181,7 +211,8 @@ class TweetsPreProcessor:
 		hastags removed. list can be empty if no hastags found
 		"""
 		hash_tags = re.findall(
-			r"(?<=^|(?<=[^a-zA-Z0-9-_\.]))#([A-Za-z]+[A-Za-z0-9-_]+)", tweet)
+				r"(?<=^|(?<=[^a-zA-Z0-9-_\.]))#([A-Za-z]+[A-Za-z0-9-_]+)",
+				tweet)
 
 		# remove hastags
 		for hash_tag in hash_tags:
@@ -193,8 +224,9 @@ class TweetsPreProcessor:
 		Gets a tweet, return a list of it's mentions (no @) and a tweet with
 		the mentions removed. list can be empty if no mentions found
 		"""
-		mentions = re.findall(r"(?<=^|(?<=[^a-zA-Z0-9]))@([A-Za-z]+[A-Za-z0-9-_]+)",
-							  tweet)
+		mentions = re.findall(
+			r"(?<=^|(?<=[^a-zA-Z0-9]))@([A-Za-z]+[A-Za-z0-9-_]+)",
+			tweet)
 
 		# remove mentions
 		for mention in mentions:
@@ -209,21 +241,21 @@ class TweetsPreProcessor:
 		links = re.findall(r"http\S+", tweet)
 		return re.sub(r"http\S+", "", tweet), links
 
-	# def getLang(self, tweet):
-	#     if len(tweet) < 5:
-	#         return 10
-	#     lang = langdetect.detect(tweet)
-	#     if lang == "en":
-	#         return 0
-	#     if lang == "de":
-	#         return 1
-	#     if lang == "es":
-	#         return 2
-	#     if lang == "it":
-	#         return 3
-	#     if lang == "pt":
-	#         return 4
-	#     if lang == "fr":
-	#         return 5
-	#
-	#     return 20
+# def getLang(self, tweet):
+#     if len(tweet) < 5:
+#         return 10
+#     lang = langdetect.detect(tweet)
+#     if lang == "en":
+#         return 0
+#     if lang == "de":
+#         return 1
+#     if lang == "es":
+#         return 2
+#     if lang == "it":
+#         return 3
+#     if lang == "pt":
+#         return 4
+#     if lang == "fr":
+#         return 5
+#
+#     return 20
