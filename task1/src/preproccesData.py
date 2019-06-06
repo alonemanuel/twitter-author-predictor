@@ -50,7 +50,7 @@ class TweetsPreProcessor:
             #
 
         # detect lang
-            lang_per_tweet.append(self.getLang(tweet))
+        #     lang_per_tweet.append(self.getLang(tweet))
 
             proccesed_tweets.append(tweet)
 
@@ -137,3 +137,4 @@ class TweetsPreProcessor:
 
     def getLang(self, tweet):
         lang = langdetect.detect(tweet)
+

@@ -1,10 +1,10 @@
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import confusion_matrix, accuracy_score
 
-import garcon
-from learners.abstract_learner import AbstractLearner
+from task1.src.garcon import Garcon
+from task1.src.learners.abstract_learner import AbstractLearner
 
-gc = garcon.Garcon()
+gc = Garcon()
 
 class DecisionTree(AbstractLearner):
 	def __init__(self, X_train, y_train):
@@ -19,7 +19,7 @@ class DecisionTree(AbstractLearner):
 		self.model.fit(self.X_train, self.y_train)
 
 	def classify(self, X):
-		X = self.prep.prep_tweets(X)
+		X = self.prep.processTweets(X).values
 		return self.model.predict(X)
 
 	def report(self, X, y):

@@ -34,15 +34,15 @@
 #
 # if __name__ == '__main__':
 # 	main()
+from task1.src.garcon import Garcon
+from task1.src.learners import *
 
-
-
-from learners.baseline import *
-from learners.decision_tree import DecisionTree
-from learners.knn import KNN
-from learners.learner_analyzer import LearnerAnalyzer
-from learners.logistic_regression import LogisticReg
-from preprocessor import *
+from task1.src.baseline import *
+from task1.src.learners.decision_tree import DecisionTree
+from task1.src.learners.knn import KNN
+from task1.src.learners.learner_analyzer import LearnerAnalyzer
+from task1.src.learners.logistic_regression import LogisticReg
+from task1.src.preprocessor import *
 
 gc  = Garcon()
 
@@ -65,7 +65,6 @@ def main():
 		analyzer.report()
 		# learners[i] = model(X_train, y_train)	# Training is done uon creation
 		# learners[i].report(X_train, y_train)
-		# learners[i].report(X_valid, y_valid)
 
 
 if __name__ == '__main__':

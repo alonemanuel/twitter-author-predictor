@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from garcon import Garcon
-from preprocessor import Preprocessor
+from task1.src.garcon import Garcon
+from task1.src.preproccesData import TweetsPreProcessor
 import matplotlib.pyplot as plt
 
 gc = Garcon()
@@ -9,8 +9,8 @@ gc = Garcon()
 class AbstractLearner(ABC):
 	@abstractmethod
 	def __init__(self, X_train, y_train):
-		self.prep = Preprocessor()
-		self.X_train = self.prep.prep_tweets(X_train)
+		self.prep = TweetsPreProcessor()
+		self.X_train = self.prep.processTweets(X_train).values
 		self.y_train = y_train
 		self.classifier_name=''
 
