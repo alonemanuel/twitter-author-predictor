@@ -1,13 +1,23 @@
 import regex
 import re
 import emoji
+from collections import defaultdict
 import pandas as pd
+import nltk
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+import functools as ft
 import langdetect
+
+
+NUM_OF_CLASSES = 10
 
 
 class TweetsPreProcessor:
 
-    def processTweets(self, tweets):
+    def processTweets(self, tweets, labels):
+
         """
         Gets the tweets, spits the data
         :param tweets:
@@ -20,10 +30,12 @@ class TweetsPreProcessor:
         lang_per_tweet = []
         link_exist_per_tweet = []
         char_count_per_tweet = []
-        all_hashtags = [] #np.empty(shape=(tweets.size, ))
-        proccesed_tweets = [] #np.empty(shape=(tweets.size, ))
+        all_hashtags = []
+        proccesed_tweets = []
         all_mentions = []
+
         for tweet in tweets:
+            tweet = tweet.replace("\n", "")
             # word count
             word_counts_per_tweet.append(self.get_word_count(tweet))
 
@@ -47,10 +59,9 @@ class TweetsPreProcessor:
         # filter emoji
             tweet, number_of_emoji = self.extractEmoji(tweet)
             number_of_emoji_per_tweet.append(number_of_emoji)
-            #
 
-        # detect lang
-        #     lang_per_tweet.append(self.getLang(tweet))
+            #lexemes preproccesing
+            tweet = self.normalize_lexical_words(tweet)
 
             proccesed_tweets.append(tweet)
 
@@ -60,14 +71,61 @@ class TweetsPreProcessor:
 
         data_from_tweets = pd.DataFrame()
         data_from_tweets['Emoji Count'] = number_of_emoji_per_tweet
-        data_from_tweets['Hastag Count'] = number_of_hastags_per_tweet
+        data_from_tweets['Hashtag Count'] = number_of_hastags_per_tweet
         data_from_tweets['Mention Count'] = number_of_mentions_per_tweet
         data_from_tweets['Link exist'] = link_exist_per_tweet
         data_from_tweets['Word count'] = word_counts_per_tweet
         data_from_tweets['Char count'] = char_count_per_tweet
+        # data_from_tweets['Language'] = lang_per_tweet
 
-        return data_from_tweets
+        most_common_hashtags = self.get_most_common_words(all_hashtags, labels)
+        most_common_mentions = self.get_most_common_words(all_mentions, labels)
+        most_common_lexemes = self.get_most_common_words(proccesed_tweets, labels, 100)
 
+        return data_from_tweets, most_common_hashtags , most_common_mentions , most_common_lexemes
+
+    def normalize_lexical_words(self, tweet):
+        '''
+
+        :param tweet:
+        :return:
+        '''
+
+        stemmer = PorterStemmer()
+        words = stopwords.words("english")
+        df = pd.Series(tweet).apply(lambda x: " ".
+                                    join([stemmer.stem(i) for i in re.sub("[^a-zA-Z]", " ", x).split()]).lower())
+        filtered = df.values.tolist()[0].split()
+
+        filtered = [i for i in filtered if i not in words]
+        return filtered
+
+    def get_most_common_words(self, words, labels, num_of_common=10):
+        """
+
+        :param words: list of list of (hash)tags for each tweet
+        :param labels: labels of the tweets in the same order
+        :return: list of lists: list[i] contains 5 most common tags for labels[i]
+        """
+        most_common = [defaultdict(int) for i in range(NUM_OF_CLASSES)]
+        # creates a dictionary for each label containing a word and the times of her appeariance
+        for (words_lst, label) in zip(words, labels):
+            for word in words_lst:
+                most_common[label][word] += 1
+
+        #creating an intersection of all the word's sets
+        intersections = [dic.keys() for dic in most_common]
+        intersections = ft.reduce(lambda d1, d2: set(d1) & set(d2), intersections)
+
+        # for each label filter the words that are not in the intersection
+        for label, dic in enumerate(most_common):
+            most_common[label] = list(filter(lambda x: x[0] not in intersections, dic.items()))
+
+        # for each label sort it's vale by thier appreance in decending order
+        for i, lst in enumerate(most_common):
+            most_common[i] = sorted(lst, key=lambda x: x[1], reverse=True)[:num_of_common]
+
+        return most_common
 
     def extractEmoji(self, tweet):
         """
@@ -119,8 +177,7 @@ class TweetsPreProcessor:
         Gets a tweet, return a list of it's mentions (no @) and a tweet with
         the mentions removed. list can be empty if no mentions found
         """
-        # mentions = re.findall(r"(?<=^|(?<=[^a-zA-Z0-9-_\.]))@([A-Za-z]+[A-Za-z0-9-_]+)", tweet)
-        mentions = re.findall(r"@([^\s]+)", tweet)
+        mentions = re.findall(r"(?<=^|(?<=[^a-zA-Z0-9]))@([A-Za-z]+[A-Za-z0-9-_]+)", tweet)
 
         # remove mentions
         for mention in mentions:
@@ -135,6 +192,21 @@ class TweetsPreProcessor:
         links = re.findall(r"http\S+", tweet)
         return re.sub(r"http\S+", "", tweet), links
 
-    def getLang(self, tweet):
-        lang = langdetect.detect(tweet)
-
+    # def getLang(self, tweet):
+    #     if len(tweet) < 5:
+    #         return 10
+    #     lang = langdetect.detect(tweet)
+    #     if lang == "en":
+    #         return 0
+    #     if lang == "de":
+    #         return 1
+    #     if lang == "es":
+    #         return 2
+    #     if lang == "it":
+    #         return 3
+    #     if lang == "pt":
+    #         return 4
+    #     if lang == "fr":
+    #         return 5
+    #
+    #     return 20
