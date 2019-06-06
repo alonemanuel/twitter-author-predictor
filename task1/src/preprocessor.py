@@ -39,3 +39,18 @@ class Preprocessor:
 		X_train, y_train = train[:, 0], train[:, 1]
 		X_test, y_test = test[:, 0], test[:, 1]
 		return X_train, y_train, X_test, y_test
+
+	def prep_tweet(self, X):
+		'''
+		Preprocesses a single tweet.
+		:param X: type string
+		:return: 	shape=(n_features, )
+		'''
+		features = np.array(0)
+
+	def prep_tweets(self, X):
+		'''
+		Preprocesses tweet(s).
+		:param X: 	shape=(n_samples, )
+		:return: 	shape=(n_samples, n_features)
+		'''
