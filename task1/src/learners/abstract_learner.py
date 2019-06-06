@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 from task1.src.garcon import Garcon
-from task1.src.preproccesData import TweetsPreProcessor
+from task1.src.preprocces_data import TweetsPreProcessor
 import matplotlib.pyplot as plt
 
 gc = Garcon()
