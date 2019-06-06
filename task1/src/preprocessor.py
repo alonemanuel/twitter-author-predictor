@@ -23,6 +23,9 @@ class Preprocessor:
 			if fn.endswith(CSV_EXT) and not fn.startswith('tweets_test'):
 				dfs.append(pd.read_csv(os.path.join(DATA_DIR_PATH, fn)))
 		df = pd.concat(dfs)
+		y = (df['user']).values
+		X= self.prep_tweets(df)
+
 		return df.values[:, 1], df.values[:, 0]
 
 	def train_test_split(self, X, y):
@@ -40,17 +43,35 @@ class Preprocessor:
 		X_test, y_test = test[:, 0], test[:, 1]
 		return X_train, y_train, X_test, y_test
 
-	def prep_tweet(self, X):
+	def get_char_count(self, tweet):
 		'''
-		Preprocesses a single tweet.
-		:param X: type string
-		:return: 	shape=(n_features, )
+		Returns the char count of the tweet (of all chars).
+		:return:
 		'''
-		features = np.array(0)
+		return tweet.length()
 
-	def prep_tweets(self, X):
+	def get_word_count(self, tweet):
+		'''
+		Return word count for tweet.
+		:param tweet:
+		:return:
+		'''
+		return len(tweet.split())
+
+
+	def prep_tweets(self, tweets):
 		'''
 		Preprocesses tweet(s).
 		:param X: 	shape=(n_samples, )
 		:return: 	shape=(n_samples, n_features)
 		'''
+		char_counts = []
+		word_counts = []
+		for i, row in tweets.iterrows():
+			tweet = row['tweet']
+			char_counts.append(self.get_char_count(tweet))
+			word_counts.append(self.get_word_count(tweet))
+		df = pd.DataFrame()
+		df['char_count'] = char_counts
+		df['word_count'] = word_counts
+		return df.values
