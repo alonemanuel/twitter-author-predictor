@@ -18,7 +18,7 @@ import langdetect
 NUM_OF_CLASSES = 10
 
 
-class TweetsPreProcessor:
+class DataPreProcessor:
     def __init__(self, tweets):
         self.vectorizer = CountVectorizer(ngram_range=(1, 3), max_features=5000,
                                           binary=False)

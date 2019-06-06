@@ -7,7 +7,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 import re
 from sklearn.ensemble import RandomForestClassifier
 
-from task1.src.preproccesData import TweetsPreProcessor
+from task1.src.preprocess_data import DataPreProcessor
 from sklearn.linear_model import LogisticRegression
 
 from sklearn.feature_selection import SelectKBest, chi2

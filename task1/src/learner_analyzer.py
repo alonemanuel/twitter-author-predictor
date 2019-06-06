@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from task1.src.garcon import Garcon
 import numpy as np
 from sklearn.model_selection import train_test_split
-from task1.src.preproccesData import TweetsPreProcessor
+from task1.src.preprocess_data import DataPreProcessor
 
 gc = Garcon()
 TRAIN_RATIO = 0.85
@@ -34,7 +34,7 @@ class LearnerAnalyzer:
 																train_size=TRAIN_RATIO,
 																test_size=1 - TRAIN_RATIO,
 																shuffle=True)
-			prep = TweetsPreProcessor(X_train)
+			prep = DataPreProcessor(X_train)
 			self.learner.fit(prep.processTweets(X_train, y_train), y_train)
 			gc.log(f'Done preproping {train_size} items')
 			y_train_pred = self.learner.predict(prep.processTweets(X_train))
