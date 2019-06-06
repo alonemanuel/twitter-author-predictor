@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="532c2636-0138-424b-88ca-5311bc41694d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/task1/src/learners/knn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/src/learners/abstract_learner.py" beforeDir="false" afterPath="$PROJECT_DIR$/task1/src/learners/abstract_learner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/src/learners/decision_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/task1/src/learners/decision_tree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/src/learners/logistic_regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/task1/src/learners/logistic_regression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/task1/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task1/src/preprocessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/task1/src/preprocessor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Hackathon$main.coverage" NAME="main Coverage Results" MODIFIED="1559809493886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/task1/src" />
+    <SUITE FILE_PATH="coverage/Hackathon$main.coverage" NAME="main Coverage Results" MODIFIED="1559809742848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/task1/src" />
     <SUITE FILE_PATH="coverage/Hackathon$preprocessor.coverage" NAME="preprocessor Coverage Results" MODIFIED="1559773012812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/task1/src" />
     <SUITE FILE_PATH="coverage/Hackathon$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1559772981620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
@@ -38,12 +32,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="261" />
-          <entry key="py" value="2152" />
+          <entry key="py" value="2296" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2413" />
+          <entry key="Python" value="2557" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -86,11 +80,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/task1/src/preprocessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="69" column="28" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
+            <state relative-caret-position="140">
+              <caret line="81" column="24" lean-forward="true" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1559807474662" expanded="true" signature="1163:1263" ph="..." />
+                <marker date="1559809856601" expanded="true" signature="1163:1517" ph="..." />
               </folding>
             </state>
           </provider>
@@ -190,12 +184,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/task1/src/preprocessor.py" />
         <option value="$PROJECT_DIR$/task1/src/learners/abstract_learner.py" />
         <option value="$PROJECT_DIR$/task1/src/learners/decision_tree.py" />
         <option value="$PROJECT_DIR$/task1/src/learners/logistic_regression.py" />
         <option value="$PROJECT_DIR$/task1/src/learners/knn.py" />
         <option value="$PROJECT_DIR$/task1/src/main.py" />
+        <option value="$PROJECT_DIR$/task1/src/preprocessor.py" />
       </list>
     </option>
   </component>
@@ -391,12 +385,12 @@
     <frame x="56" y="0" width="1486" height="871" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23632538" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23632538" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32885906" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.45392954" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.45392954" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -620,11 +614,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/task1/src/preprocessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="69" column="28" selection-start-line="69" selection-start-column="28" selection-end-line="69" selection-end-column="28" />
+        <state relative-caret-position="140">
+          <caret line="81" column="24" lean-forward="true" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <marker date="1559807474662" expanded="true" signature="1163:1263" ph="..." />
+            <marker date="1559809856601" expanded="true" signature="1163:1517" ph="..." />
           </folding>
         </state>
       </provider>

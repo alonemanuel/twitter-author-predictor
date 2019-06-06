@@ -57,6 +57,22 @@ class Preprocessor:
 		'''
 		return len(tweet.split())
 
+	def get_hash_count(self, tweet):
+		'''
+		Return # count for tweet.
+		:param tweet:
+		:return:
+		'''
+		return tweet.count('#')
+
+	def get_at_count(self, tweet):
+		'''
+		Return @ count for tweet.
+		:param tweet:
+		:return:
+		'''
+		return tweet.count('@')
+
 	def prep_tweets(self, tweets):
 		'''
 		Preprocesses tweet(s).
@@ -65,11 +81,19 @@ class Preprocessor:
 		'''
 		char_counts = []
 		word_counts = []
+		hash_counts = []
+		at_counts = []
+		emoji_count = []
+
 		for tweet in tweets:
 			# tweet = row['tweet']
 			char_counts.append(self.get_char_count(tweet))
 			word_counts.append(self.get_word_count(tweet))
+			hash_counts.append(self.get_hash_count(tweet))
+			at_counts.append(self.get_at_count(tweet))
 		df = pd.DataFrame()
 		df['char_count'] = char_counts
 		df['word_count'] = word_counts
+		df['hash_count'] = hash_counts
+		df['at_count'] = at_counts
 		return df.values
