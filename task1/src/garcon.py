@@ -3,7 +3,7 @@ import inspect
 import numpy as np
 import matplotlib.pyplot as plt
 
-IMDIR = '../Images/'
+IMDIR = 'Images/'
 
 class Garcon:
 	first_gc = None
