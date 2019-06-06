@@ -4,209 +4,226 @@ import emoji
 from collections import defaultdict
 import pandas as pd
 import nltk
+from sklearn.feature_extraction.text import CountVectorizer
+
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import functools as ft
+import numpy as np
 import langdetect
-
 
 NUM_OF_CLASSES = 10
 
-
 class TweetsPreProcessor:
+	def __init__(self, tweets):
+		self.vectorizer = CountVectorizer(ngram_range=(1, 3), max_features=5000,
+										  binary=False)
+		self.vectorizer.fit(tweets)
 
-    def processTweets(self, tweets, labels):
-
-        """
+	def processTweets(self, tweets, labels):
+		"""
         Gets the tweets, spits the data
         :param tweets:
         :return: data_from_tweets - pandas df shape : (num_of_tweets, num_of_features)
         """
-        number_of_emoji_per_tweet = []
-        number_of_hastags_per_tweet = []
-        number_of_mentions_per_tweet = []
-        word_counts_per_tweet = []
-        lang_per_tweet = []
-        link_exist_per_tweet = []
-        char_count_per_tweet = []
-        all_hashtags = []
-        proccesed_tweets = []
-        all_mentions = []
 
-        for tweet in tweets:
-            tweet = tweet.replace("\n", "")
-            # word count
-            word_counts_per_tweet.append(self.get_word_count(tweet))
+		number_of_emoji_per_tweet = []
+		number_of_hastags_per_tweet = []
+		number_of_mentions_per_tweet = []
+		word_counts_per_tweet = []
+		lang_per_tweet = []
+		link_exist_per_tweet = []
+		char_count_per_tweet = []
+		all_hashtags = []
+		proccesed_tweets = []
+		all_mentions = []
 
-            # char count
-            char_count_per_tweet.append(self.get_char_count(tweet))
+		for tweet in tweets:
+			tweet = tweet.replace("\n", "")
+			# word count
+			word_counts_per_tweet.append(self.get_word_count(tweet))
 
-            # filter hastags (#)
-            tweet, hashtags = self.extractHashtags(tweet)
-            number_of_hastags_per_tweet.append(len(hashtags))
-            all_hashtags.append(hashtags)
+			# char count
+			char_count_per_tweet.append(self.get_char_count(tweet))
 
-            # filter mentions (@)
-            tweet, mentions = self.extractMentions(tweet)
-            number_of_mentions_per_tweet.append(len(mentions))
-            all_mentions.append(mentions)
+			# filter hastags (#)
+			tweet, hashtags = self.extractHashtags(tweet)
+			number_of_hastags_per_tweet.append(len(hashtags))
+			all_hashtags.append(hashtags)
 
-        # filter urls (https://...)
-            tweet, links = self.exractLinks(tweet)
-            link_exist_per_tweet.append(1 if links else 0)
+			# filter mentions (@)
+			tweet, mentions = self.extractMentions(tweet)
+			number_of_mentions_per_tweet.append(len(mentions))
+			all_mentions.append(mentions)
 
-        # filter emoji
-            tweet, number_of_emoji = self.extractEmoji(tweet)
-            number_of_emoji_per_tweet.append(number_of_emoji)
+			# filter urls (https://...)
+			tweet, links = self.exractLinks(tweet)
+			link_exist_per_tweet.append(1 if links else 0)
 
-            #lexemes preproccesing
-            tweet = self.normalize_lexical_words(tweet)
+			# filter emoji
+			tweet, number_of_emoji = self.extractEmoji(tweet)
+			number_of_emoji_per_tweet.append(number_of_emoji)
 
-            proccesed_tweets.append(tweet)
+			# lexemes preproccesing
+			tweet = self.normalize_lexical_words(tweet)
 
-        ##
-            # at this point tweet variable is a cleaned tweet.
-            # mentions, hastags, and links can be found in the lists
+			proccesed_tweets.append(tweet)
 
-        data_from_tweets = pd.DataFrame()
-        data_from_tweets['Emoji Count'] = number_of_emoji_per_tweet
-        data_from_tweets['Hashtag Count'] = number_of_hastags_per_tweet
-        data_from_tweets['Mention Count'] = number_of_mentions_per_tweet
-        data_from_tweets['Link exist'] = link_exist_per_tweet
-        data_from_tweets['Word count'] = word_counts_per_tweet
-        data_from_tweets['Char count'] = char_count_per_tweet
-        # data_from_tweets['Language'] = lang_per_tweet
+		##
+		# at this point tweet variable is a cleaned tweet.
+		# mentions, hastags, and links can be found in the lists
 
-        most_common_hashtags = self.get_most_common_words(all_hashtags, labels)
-        most_common_mentions = self.get_most_common_words(all_mentions, labels)
-        most_common_lexemes = self.get_most_common_words(proccesed_tweets, labels, 100)
+		data_from_tweets = pd.DataFrame()
+		data_from_tweets['Emoji Count'] = number_of_emoji_per_tweet
+		data_from_tweets['Hashtag Count'] = number_of_hastags_per_tweet
+		data_from_tweets['Mention Count'] = number_of_mentions_per_tweet
+		data_from_tweets['Link exist'] = link_exist_per_tweet
+		data_from_tweets['Word count'] = word_counts_per_tweet
+		data_from_tweets['Char count'] = char_count_per_tweet
+		# data_from_tweets['Language'] = lang_per_tweet
 
-        return data_from_tweets, most_common_hashtags , most_common_mentions , most_common_lexemes
+		most_common_hashtags = self.get_most_common_words(all_hashtags, labels)
+		most_common_mentions = self.get_most_common_words(all_mentions, labels)
+		most_common_lexemes = self.get_most_common_words(proccesed_tweets, labels,
+														 100)
+		bow = self.vectorizer.transform(tweets).toarray()
+		# print(bow.shape)
+		# print(data_from_tweets.values.shape)
+		features = np.column_stack((data_from_tweets.values, bow))
+		return features
 
-    def normalize_lexical_words(self, tweet):
-        '''
+		return data_from_tweets, most_common_hashtags, most_common_mentions, most_common_lexemes
 
-        :param tweet:
-        :return:
-        '''
+	def normalize_lexical_words(self, tweet):
+		'''
 
-        stemmer = PorterStemmer()
-        words = stopwords.words("english")
-        df = pd.Series(tweet).apply(lambda x: " ".
-                                    join([stemmer.stem(i) for i in re.sub("[^a-zA-Z]", " ", x).split()]).lower())
-        filtered = df.values.tolist()[0].split()
+		:param tweet:
+		:return:
+		'''
 
-        filtered = [i for i in filtered if i not in words]
-        return filtered
+		stemmer = PorterStemmer()
+		words = stopwords.words("english")
+		df = pd.Series(tweet).apply(lambda x: " ".
+									join([stemmer.stem(i) for i in
+										  re.sub("[^a-zA-Z]", " ",
+												 x).split()]).lower())
+		filtered = df.values.tolist()[0].split()
 
-    def get_most_common_words(self, words, labels, num_of_common=10):
-        """
+		filtered = [i for i in filtered if i not in words]
+		return filtered
 
-        :param words: list of list of (hash)tags for each tweet
-        :param labels: labels of the tweets in the same order
-        :return: list of lists: list[i] contains 5 most common tags for labels[i]
-        """
-        most_common = [defaultdict(int) for i in range(NUM_OF_CLASSES)]
-        # creates a dictionary for each label containing a word and the times of her appeariance
-        for (words_lst, label) in zip(words, labels):
-            for word in words_lst:
-                most_common[label][word] += 1
+	def get_most_common_words(self, words, labels, num_of_common=10):
+		"""
 
-        #creating an intersection of all the word's sets
-        intersections = [dic.keys() for dic in most_common]
-        intersections = ft.reduce(lambda d1, d2: set(d1) & set(d2), intersections)
+		:param words: list of list of (hash)tags for each tweet
+		:param labels: labels of the tweets in the same order
+		:return: list of lists: list[i] contains 5 most common tags for labels[i]
+		"""
+		most_common = [defaultdict(int) for i in range(NUM_OF_CLASSES)]
+		# creates a dictionary for each label containing a word and the times of her appeariance
+		for (words_lst, label) in zip(words, labels):
+			for word in words_lst:
+				most_common[label][word] += 1
 
-        # for each label filter the words that are not in the intersection
-        for label, dic in enumerate(most_common):
-            most_common[label] = list(filter(lambda x: x[0] not in intersections, dic.items()))
+			# creating an intersection of all the word's sets
+		intersections = [dic.keys() for dic in most_common]
+		intersections = ft.reduce(lambda d1, d2: set(d1) & set(d2), intersections)
 
-        # for each label sort it's vale by thier appreance in decending order
-        for i, lst in enumerate(most_common):
-            most_common[i] = sorted(lst, key=lambda x: x[1], reverse=True)[:num_of_common]
+		# for each label filter the words that are not in the intersection
+		for label, dic in enumerate(most_common):
+			most_common[label] = list(
+				filter(lambda x: x[0] not in intersections, dic.items()))
 
-        return most_common
+		# for each label sort it's vale by thier appreance in decending order
+		for i, lst in enumerate(most_common):
+			most_common[i] = sorted(lst, key=lambda x: x[1], reverse=True)[
+							 :num_of_common]
 
-    def extractEmoji(self, tweet):
-        """
-        Gets a tweet, return number of emojis in the tweet and a tweet with
-        the emojis removed.
-        """
-        emoji_set = set()
-        number_of_emoji = 0
-        line = regex.findall(r'\X', tweet)
-        for word in line:
-            if any(char in emoji.UNICODE_EMOJI for char in word):
-                emoji_set.add(word)
-                number_of_emoji += 1
+		return most_common
 
-        # remove emojis
-        for emoji_type in emoji_set:
-            tweet = tweet.replace(emoji_type, '')
-        return tweet, number_of_emoji
+	def extractEmoji(self, tweet):
+		"""
+		Gets a tweet, return number of emojis in the tweet and a tweet with
+		the emojis removed.
+		"""
+		emoji_set = set()
+		number_of_emoji = 0
+		line = regex.findall(r'\X', tweet)
+		for word in line:
+			if any(char in emoji.UNICODE_EMOJI for char in word):
+				emoji_set.add(word)
+				number_of_emoji += 1
 
-    def get_word_count(self, tweet):
-        '''
-        Return word count for tweet.
-        :param tweet:
-        :return:
-        '''
-        return len(tweet.split())
+		# remove emojis
+		for emoji_type in emoji_set:
+			tweet = tweet.replace(emoji_type, '')
+		return tweet, number_of_emoji
 
-    def get_char_count(self, tweet):
-        '''
-        Returns the char count of the tweet (of all chars).
-        :return:
-        '''
-        return len(tweet)
+	def get_word_count(self, tweet):
+		'''
+		Return word count for tweet.
+		:param tweet:
+		:return:
+		'''
+		return len(tweet.split())
 
-    def extractHashtags(self, tweet):
-        """
-        Gets a tweet, return a list of it's hastags (no #) and a tweet with the
-        hastags removed. list can be empty if no hastags found
-        """
-        hash_tags = re.findall(r"(?<=^|(?<=[^a-zA-Z0-9-_\.]))#([A-Za-z]+[A-Za-z0-9-_]+)", tweet)
+	def get_char_count(self, tweet):
+		'''
+		Returns the char count of the tweet (of all chars).
+		:return:
+		'''
+		return len(tweet)
 
-        # remove hastags
-        for hash_tag in hash_tags:
-            tweet = tweet.replace("#" + hash_tag, '')
-        return tweet, hash_tags
+	def extractHashtags(self, tweet):
+		"""
+		Gets a tweet, return a list of it's hastags (no #) and a tweet with the
+		hastags removed. list can be empty if no hastags found
+		"""
+		hash_tags = re.findall(
+			r"(?<=^|(?<=[^a-zA-Z0-9-_\.]))#([A-Za-z]+[A-Za-z0-9-_]+)", tweet)
 
-    def extractMentions(self, tweet):
-        """
-        Gets a tweet, return a list of it's mentions (no @) and a tweet with
-        the mentions removed. list can be empty if no mentions found
-        """
-        mentions = re.findall(r"(?<=^|(?<=[^a-zA-Z0-9]))@([A-Za-z]+[A-Za-z0-9-_]+)", tweet)
+		# remove hastags
+		for hash_tag in hash_tags:
+			tweet = tweet.replace("#" + hash_tag, '')
+		return tweet, hash_tags
 
-        # remove mentions
-        for mention in mentions:
-            tweet = tweet.replace("@" + mention, '')
-        return tweet, mentions
+	def extractMentions(self, tweet):
+		"""
+		Gets a tweet, return a list of it's mentions (no @) and a tweet with
+		the mentions removed. list can be empty if no mentions found
+		"""
+		mentions = re.findall(r"(?<=^|(?<=[^a-zA-Z0-9]))@([A-Za-z]+[A-Za-z0-9-_]+)",
+							  tweet)
 
-    def exractLinks(self, tweet):
-        """
-        Gets a tweet, return a list of it's links (full link) and a tweet with
-        the links removed. list can be empty if no links found
-        """
-        links = re.findall(r"http\S+", tweet)
-        return re.sub(r"http\S+", "", tweet), links
+		# remove mentions
+		for mention in mentions:
+			tweet = tweet.replace("@" + mention, '')
+		return tweet, mentions
 
-    # def getLang(self, tweet):
-    #     if len(tweet) < 5:
-    #         return 10
-    #     lang = langdetect.detect(tweet)
-    #     if lang == "en":
-    #         return 0
-    #     if lang == "de":
-    #         return 1
-    #     if lang == "es":
-    #         return 2
-    #     if lang == "it":
-    #         return 3
-    #     if lang == "pt":
-    #         return 4
-    #     if lang == "fr":
-    #         return 5
-    #
-    #     return 20
+	def exractLinks(self, tweet):
+		"""
+		Gets a tweet, return a list of it's links (full link) and a tweet with
+		the links removed. list can be empty if no links found
+		"""
+		links = re.findall(r"http\S+", tweet)
+		return re.sub(r"http\S+", "", tweet), links
+
+	# def getLang(self, tweet):
+	#     if len(tweet) < 5:
+	#         return 10
+	#     lang = langdetect.detect(tweet)
+	#     if lang == "en":
+	#         return 0
+	#     if lang == "de":
+	#         return 1
+	#     if lang == "es":
+	#         return 2
+	#     if lang == "it":
+	#         return 3
+	#     if lang == "pt":
+	#         return 4
+	#     if lang == "fr":
+	#         return 5
+	#
+	#     return 20

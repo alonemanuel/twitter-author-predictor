@@ -1,6 +1,6 @@
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
-from garcon import Garcon
+from task1.src.garcon import Garcon
 import numpy as np
 from sklearn.model_selection import train_test_split
 
@@ -22,7 +22,7 @@ class LearnerAnalyzer:
 		gc.enter_func()
 		gc.init_plt()
 		max_train_size = self.X_train.shape[0]
-		size_range = np.arange(20, max_train_size, STEP_SIZE)
+		size_range = np.arange(5000, max_train_size, STEP_SIZE)
 		train_accuracy = np.zeros(size_range.shape)
 		test_accuracy = np.zeros(size_range.shape)
 		h=None
@@ -41,7 +41,7 @@ class LearnerAnalyzer:
 			test_accuracy[i] = accuracy_score(y_test, y_test_pred)
 		h.report(X_train, y_train)
 		h.report(X_test, y_test)
-		plt.plot(size_range, train_accuracy)
-		plt.plot(size_range, test_accuracy)
+		plt.plot(size_range, train_accuracy, label='Train')
+		plt.plot(size_range, test_accuracy, label='Test')
 		plt.legend()
 		gc.save_plt(learner_name)

@@ -4,17 +4,17 @@ from sklearn.multioutput import ClassifierChain
 
 from task1.src.garcon import Garcon
 from task1.src.learners.abstract_learner import AbstractLearner
+
 gc = Garcon()
 
 class LogisticReg(AbstractLearner):
 	def __init__(self, X_train, y_train):
 		super().__init__(X_train, y_train)
 		self.model = LogisticRegression()
-		# self.model = ClassifierChain(LogisticRegression())
 		self.fit()
 
 	def set_name(self):
-		self.classifier_name='Logistic Regression'
+		self.classifier_name = 'Logistic Regression'
 
 	def fit(self):
 		self.model.fit(self.X_train, self.y_train)
