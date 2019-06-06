@@ -9,8 +9,8 @@ gc = Garcon()
 class AbstractLearner(ABC):
 	@abstractmethod
 	def __init__(self, X_train, y_train):
-		self.prep = TweetsPreProcessor()
-		self.X_train = self.prep.processTweets(X_train).values
+		self.prep = TweetsPreProcessor(X_train)
+		self.X_train = self.prep.processTweets(X_train)
 		self.y_train = y_train
 		self.classifier_name=''
 

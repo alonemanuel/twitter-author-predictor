@@ -19,7 +19,7 @@ class DecisionTree(AbstractLearner):
 		self.model.fit(self.X_train, self.y_train)
 
 	def classify(self, X):
-		X = self.prep.processTweets(X).values
+		X = self.prep.processTweets(X)
 		return self.model.predict(X)
 
 	def report(self, X, y):
