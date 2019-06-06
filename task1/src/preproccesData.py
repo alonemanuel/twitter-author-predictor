@@ -2,6 +2,7 @@ import regex
 import re
 import emoji
 import pandas as pd
+import langdetect
 
 
 class TweetsPreProcessor:
@@ -15,11 +16,20 @@ class TweetsPreProcessor:
         number_of_emoji_per_tweet = []
         number_of_hastags_per_tweet = []
         number_of_mentions_per_tweet = []
+        word_counts_per_tweet = []
+        lang_per_tweet = []
         link_exist_per_tweet = []
+        char_count_per_tweet = []
         all_hashtags = [] #np.empty(shape=(tweets.size, ))
         proccesed_tweets = [] #np.empty(shape=(tweets.size, ))
         all_mentions = []
         for tweet in tweets:
+            # word count
+            word_counts_per_tweet.append(self.get_word_count(tweet))
+
+            # char count
+            char_count_per_tweet.append(self.get_char_count(tweet))
+
             # filter hastags (#)
             tweet, hashtags = self.extractHashtags(tweet)
             number_of_hastags_per_tweet.append(len(hashtags))
@@ -38,6 +48,10 @@ class TweetsPreProcessor:
             tweet, number_of_emoji = self.extractEmoji(tweet)
             number_of_emoji_per_tweet.append(number_of_emoji)
             #
+
+        # detect lang
+            lang_per_tweet.append(self.getLang(tweet))
+
             proccesed_tweets.append(tweet)
 
         ##
@@ -49,6 +63,8 @@ class TweetsPreProcessor:
         data_from_tweets['Hastag Count'] = number_of_hastags_per_tweet
         data_from_tweets['Mention Count'] = number_of_mentions_per_tweet
         data_from_tweets['Link exist'] = link_exist_per_tweet
+        data_from_tweets['Word count'] = word_counts_per_tweet
+        data_from_tweets['Char count'] = char_count_per_tweet
 
         return data_from_tweets
 
@@ -71,6 +87,20 @@ class TweetsPreProcessor:
             tweet = tweet.replace(emoji_type, '')
         return tweet, number_of_emoji
 
+    def get_word_count(self, tweet):
+        '''
+        Return word count for tweet.
+        :param tweet:
+        :return:
+        '''
+        return len(tweet.split())
+
+    def get_char_count(self, tweet):
+        '''
+        Returns the char count of the tweet (of all chars).
+        :return:
+        '''
+        return len(tweet)
 
     def extractHashtags(self, tweet):
         """
@@ -104,3 +134,6 @@ class TweetsPreProcessor:
         """
         links = re.findall(r"http\S+", tweet)
         return re.sub(r"http\S+", "", tweet), links
+
+    def getLang(self, tweet):
+        lang = langdetect.detect(tweet)
