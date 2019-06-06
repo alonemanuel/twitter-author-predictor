@@ -6,6 +6,7 @@ from task1.src.learners.abstract_learner import AbstractLearner
 
 gc = Garcon()
 
+
 class DecisionTree(AbstractLearner):
 	def __init__(self, X_train, y_train):
 		super().__init__(X_train, y_train)
