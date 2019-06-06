@@ -11,6 +11,10 @@ class Garcon:
 	def __init__(self):
 		self.start_time = time.time()
 		self.fig = None
+		self.iterable_len = None
+		self.iter_count = 0
+		self.iter_step = 1
+		self.iter_stage = 0
 		if not Garcon.first_gc:
 			Garcon.first_gc = self
 
@@ -46,6 +50,18 @@ class Garcon:
 			call_frame = inspect.getouterframes(curr_frame, 2)
 			title = call_frame[1][3]
 		plt.title(title)
+
+	def iter(self, iterable=None):
+		if iterable is not None:
+			self.iter_step = (int) (0.1 * len(iterable))
+			self.iterable_len = len(iterable)
+			self.log(f'Starting to iterate {len(iterable)} times')
+		else:
+			if self.iter_count == self.iter_step:
+				self.iter_count = 0
+				self.iter_stage += 1
+				self.log(f'\tDone {self.iter_stage*10}%')
+			self.iter_count += 1
 
 	def init_subplt(self, title):
 		plt.subplot()

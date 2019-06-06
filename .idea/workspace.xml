@@ -2,36 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cc8c735-0b4b-4ca1-9486-b784514e2288" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/task1/src/adaboost.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task1/src/bootstrap.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task1/src/cross_validation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task1/src/linear_regression.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task1/src/meta_algo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task1/src/poly_regression.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task1/src/svm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Hackathon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Hackathon.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/src/.idea/desktop.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/src/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/src/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/src/.idea/src.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/src/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/src/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/task1/src/baseline.py" beforeDir="false" afterPath="$PROJECT_DIR$/task1/src/baseline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task1/src/garcon.py" beforeDir="false" afterPath="$PROJECT_DIR$/task1/src/garcon.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task1/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/task1/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task1/src/preprocessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/task1/src/preprocessor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/src/tweets_data/desktop.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/backends/backend_cairo.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/backends/backend_cairo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/backends/backend_qt5cairo.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/backends/backend_qt5cairo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/backends/backend_tkcairo.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/backends/backend_tkcairo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/lines.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/lines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pandas/plotting/_core.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pandas/plotting/_core.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pandas/tests/plotting/test_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pandas/tests/plotting/test_frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pandas/tests/plotting/test_series.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pandas/tests/plotting/test_series.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/pkg_resources/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/pkg_resources/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/distlib/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/distlib/resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/pkg_resources/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/pkg_resources/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/statsmodels/graphics/tests/test_regressionplots.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/statsmodels/graphics/tests/test_regressionplots.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Hackathon$main.coverage" NAME="main Coverage Results" MODIFIED="1559775054218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/task1/src" />
+    <SUITE FILE_PATH="coverage/Hackathon$main.coverage" NAME="main Coverage Results" MODIFIED="1559783884401" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/task1/src" />
     <SUITE FILE_PATH="coverage/Hackathon$preprocessor.coverage" NAME="preprocessor Coverage Results" MODIFIED="1559773012812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/task1/src" />
     <SUITE FILE_PATH="coverage/Hackathon$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1559772981620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
@@ -78,114 +55,137 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="559" />
+          <entry key="Python Console" value="788" />
           <entry key="dummy" value="19" />
-          <entry key="py" value="3622" />
+          <entry key="py" value="5339" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="19" />
-          <entry key="Python" value="4181" />
+          <entry key="Python" value="6127" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="csv" value="3" />
+          <entry key="csv" value="13" />
           <entry key="gitignore" value="1" />
-          <entry key="py" value="23" />
+          <entry key="py" value="28" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSV" value="3" />
+          <entry key="CSV" value="13" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="23" />
+          <entry key="Python" value="28" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task1/src/classifier.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-              <folding>
-                <marker date="1559762239640" expanded="true" signature="56:125" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task1/src/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-                <marker date="1559773536708" expanded="true" signature="382:507" ph="..." />
-                <marker date="1559773536708" expanded="true" signature="573:638" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/task1/src/preprocessor.py">
+        <entry file="file://$PROJECT_DIR$/task1/src/baseline.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="284">
+              <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <marker date="1559775054065" expanded="true" signature="231:232" ph="..." />
-                <marker date="1559775054065" expanded="true" signature="508:550" ph="..." />
+                <element signature="e#0#13#0" expanded="true" />
+                <marker date="1559783863797" expanded="true" signature="515:517" ph="..." />
+                <marker date="1559783863797" expanded="true" signature="866:1041" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task1/src/test_submission.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1496">
-              <caret line="146" column="20" lean-forward="true" selection-start-line="146" selection-start-column="20" selection-end-line="146" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#47#0" expanded="true" />
-              </folding>
-            </state>
+        <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/joeBiden_tweets.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="-31" />
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/tweets_test_demo.csv">
-          <provider selected="true" editor-type-id="csv-text-editor" />
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/names.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../../Year1/sem1/intro/week8/sub8_intro/car.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="64" column="11" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
-            </state>
+        <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/jimmykimmel_tweets.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="-31" />
+          </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../../Year1/sem1/intro/week9/sub9_intro/ex9/ship.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1450" />
+        <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/ellenShow_tweets.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="-31" />
+          </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/donaldTrump_tweets.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="-31" />
+          </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/cristiano_tweets.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="-31" />
+          </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/ConanOBrien_tweets.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="-31" />
+          </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/Schwarzenegger_tweets.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="-31" />
+          </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/ladygaga_tweets.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="-31" />
+          </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/labronJames_tweets.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="-694" />
+          </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
         </entry>
       </file>
@@ -202,6 +202,9 @@
     <findStrings>
       <find>class</find>
       <find>predi</find>
+      <find>udcd7a8weu</find>
+      <find>udbknuo4km</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -213,7 +216,6 @@
         <option value="$PROJECT_DIR$/task1/src/parser.py" />
         <option value="$PROJECT_DIR$/task1/src/classifier.py" />
         <option value="$PROJECT_DIR$/task1/src/test_submission.py" />
-        <option value="$PROJECT_DIR$/task1/src/baseline.py" />
         <option value="$PROJECT_DIR$/task1/src/adaboost.py" />
         <option value="$PROJECT_DIR$/task1/src/bootstrap.py" />
         <option value="$PROJECT_DIR$/task1/src/linear_regression.py" />
@@ -224,6 +226,9 @@
         <option value="$PROJECT_DIR$/task1/src/meta-algos/meta_algo.py" />
         <option value="$PROJECT_DIR$/task1/src/main.py" />
         <option value="$PROJECT_DIR$/task1/src/preprocessor.py" />
+        <option value="$PROJECT_DIR$/task1/src/garcon.py" />
+        <option value="$PROJECT_DIR$/task1/src/tweets_data/joeBiden_tweets.csv" />
+        <option value="$PROJECT_DIR$/task1/src/baseline.py" />
       </list>
     </option>
   </component>
@@ -238,9 +243,9 @@
       <path value="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/backends/web_backend/jquery-ui-1.12.1/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
-    <option name="width" value="977" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="638" />
+    <option name="width" value="1289" />
     <option name="height" value="1088" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -334,6 +339,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Hackathon" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Hackathon" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -404,15 +431,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <frame x="511" y="0" width="1031" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.14228188" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20803295" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32885906" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5543624" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4504749" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -422,11 +449,12 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3261745" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32428765" />
+      <window_info anchor="right" x="0" y="0" width="155" height="670" id="Documentation" side_tool="true" weight="0.32939634" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.3295302" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.37840065" />
       <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
     </layout>
   </component>
@@ -435,17 +463,6 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/task1/src/baseline.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/task1/src/parser.py">
@@ -484,31 +501,6 @@
           <caret line="45" selection-start-line="45" selection-end-line="46" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/cristiano_tweets.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task1/src/garcon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="47" column="24" lean-forward="true" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task1/src/baseline.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-74">
-          <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-            <marker date="1559767214848" expanded="true" signature="196:198" ph="..." />
-            <marker date="1559767214848" expanded="true" signature="482:583" ph="..." />
           </folding>
         </state>
       </provider>
@@ -552,13 +544,20 @@
     <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/names.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/task1/src/classifier.py">
+    <entry file="file://$PROJECT_DIR$/task1/src/meta_algo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        <state relative-caret-position="110">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
           <folding>
-            <marker date="1559762239640" expanded="true" signature="56:125" ph="..." />
+            <marker date="1559769428463" expanded="true" signature="52:54" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python37/Lib/site-packages/sklearn/model_selection/_split.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="2072" column="4" selection-start-line="2072" selection-start-column="4" selection-end-line="2072" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -572,43 +571,154 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task1/src/meta_algo.py">
+    <entry file="file://C:/Program Files/Python37/Lib/site-packages/sklearn/feature_extraction/text.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <marker date="1559769428463" expanded="true" signature="52:54" ph="..." />
-          </folding>
+        <state relative-caret-position="25">
+          <caret line="1030" selection-start-line="1030" selection-end-line="1030" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/task1/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="210">
+          <caret line="25" column="53" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
-            <marker date="1559773536708" expanded="true" signature="382:507" ph="..." />
-            <marker date="1559773536708" expanded="true" signature="573:638" ph="..." />
+            <marker date="1559775426596" expanded="true" signature="399:524" ph="..." />
+            <marker date="1559775426596" expanded="true" signature="607:672" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/Python37/Lib/site-packages/sklearn/model_selection/_split.py">
+    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/python_stubs/-991083293/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="2072" column="4" selection-start-line="2072" selection-start-column="4" selection-end-line="2072" selection-end-column="4" />
+        <state relative-caret-position="127">
+          <caret line="774" column="8" selection-start-line="774" selection-start-column="8" selection-end-line="774" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/task1/src/preprocessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="382">
+          <caret line="37" column="65" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <marker date="1559775054065" expanded="true" signature="231:232" ph="..." />
-            <marker date="1559775054065" expanded="true" signature="508:550" ph="..." />
+            <marker date="1559775834715" expanded="true" signature="231:232" ph="..." />
+            <marker date="1559775834715" expanded="true" signature="526:570" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <marker date="1559762239640" expanded="true" signature="56:125" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/garcon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="62" column="29" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
+          <folding>
+            <marker date="1559782585043" expanded="true" signature="1312:1653" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/KimKardashian_tweets.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="122">
+          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/joeBiden_tweets.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/jimmykimmel_tweets.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/ellenShow_tweets.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/donaldTrump_tweets.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/cristiano_tweets.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/ConanOBrien_tweets.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/Schwarzenegger_tweets.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/ladygaga_tweets.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/tweets_data/labronJames_tweets.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-694" />
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/src/baseline.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1559783863797" expanded="true" signature="515:517" ph="..." />
+            <marker date="1559783863797" expanded="true" signature="866:1041" ph="..." />
           </folding>
         </state>
       </provider>

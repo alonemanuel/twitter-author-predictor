@@ -12,12 +12,14 @@ def classifier_report(classifier, X_test, y_test):
 	:param X_test: 			shape=(n_samples, )
 	:param y_test: 			shape=(n_samples, )
 	'''
+	gc.enter_func()
 	y_hat = classifier.classify(X_test)
 	print(classification_report(y_test, y_hat))
 	print(confusion_matrix(y_test, y_hat))
 
 
 def main():
+	gc.enter_func()
 	prep = Preprocessor()
 	X, y = prep.get_train_data()
 
