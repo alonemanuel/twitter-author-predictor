@@ -4,7 +4,6 @@ import emoji
 import pandas as pd
 
 
-
 class TweetsPreProcessor:
 
     def processTweets(self, tweets):
@@ -17,25 +16,31 @@ class TweetsPreProcessor:
         number_of_hastags_per_tweet = []
         number_of_mentions_per_tweet = []
         link_exist_per_tweet = []
-        for index, row in tweets.iterrows():
-            tweet = row['tweet']
+        all_hashtags = [] #np.empty(shape=(tweets.size, ))
+        proccesed_tweets = [] #np.empty(shape=(tweets.size, ))
+        all_mentions = []
+        for tweet in tweets:
             # filter hastags (#)
             tweet, hashtags = self.extractHashtags(tweet)
             number_of_hastags_per_tweet.append(len(hashtags))
+            all_hashtags.append(hashtags)
 
             # filter mentions (@)
             tweet, mentions = self.extractMentions(tweet)
             number_of_mentions_per_tweet.append(len(mentions))
+            all_mentions.append(mentions)
 
-            # filter urls (https://...)
+        # filter urls (https://...)
             tweet, links = self.exractLinks(tweet)
             link_exist_per_tweet.append(1 if links else 0)
 
-            # filter emoji
+        # filter emoji
             tweet, number_of_emoji = self.extractEmoji(tweet)
             number_of_emoji_per_tweet.append(number_of_emoji)
 
-            ##
+            proccesed_tweets.append(tweet)
+
+        ##
             # at this point tweet variable is a cleaned tweet.
             # mentions, hastags, and links can be found in the lists
 
@@ -84,7 +89,8 @@ class TweetsPreProcessor:
         Gets a tweet, return a list of it's mentions (no @) and a tweet with
         the mentions removed. list can be empty if no mentions found
         """
-        mentions = re.findall(r"(?<=^|(?<=[^a-zA-Z0-9-_\.]))@([A-Za-z]+[A-Za-z0-9-_]+)", tweet)
+        # mentions = re.findall(r"(?<=^|(?<=[^a-zA-Z0-9-_\.]))@([A-Za-z]+[A-Za-z0-9-_]+)", tweet)
+        mentions = re.findall(r"@([^\s]+)", tweet)
 
         # remove mentions
         for mention in mentions:

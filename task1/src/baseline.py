@@ -10,7 +10,7 @@ import re
 from sklearn.svm import SVC
 from sklearn.linear_model import LinearRegression
 
-from garcon import Garcon
+from src.garcon import Garcon
 
 gc = Garcon()
 
@@ -31,7 +31,8 @@ class Baseline:
 		:param y_train: 	shape=(n_samples, )
 		'''
 		gc.enter_func()
-		self.X_train = self.preprocess(X_train)
+		# self.X_train = self.preprocess(X_train)
+		self.X_train = X_train
 		self.y_train = y_train.astype(int)
 		self.model = svm.SVC(gamma='scale', decision_function_shape='ovo')
 		self.train()
