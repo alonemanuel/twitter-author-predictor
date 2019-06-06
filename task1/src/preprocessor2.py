@@ -55,7 +55,7 @@ CSV_EXT = ".csv"
 TRAIN_RATIO = 0.85
 DATA_DIR_PATH = 'tweets_data'
 
-class Preprocessor:
+class Preprocessor2:
 
 	def get_train_data(self):
 		'''

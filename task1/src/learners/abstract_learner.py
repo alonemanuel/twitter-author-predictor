@@ -1,27 +1,44 @@
 from abc import ABC, abstractmethod
 
+from sklearn.metrics import confusion_matrix, accuracy_score
+
 from task1.src.garcon import Garcon
 from task1.src.preprocessor import Preprocessor
 import matplotlib.pyplot as plt
 
 gc = Garcon()
 
-class AbstractLearner(ABC):
-	@abstractmethod
-	def __init__(self, X_train, y_train):
-		self.prep = Preprocessor(X_train)
-		self.X_train = self.prep.processTweets(X_train)
-		self.y_train = y_train
-		self.classifier_name=''
+class LearnerWrapper():
+	def __init__(self, model, prep, name):
+		'''
+		:param prep: 		preprocessor
+		'''
+		gc.enter_func()
+		self.prep = prep
+		self.model = model()
+		self.classifier_name = name
 
-	@abstractmethod
-	def set_name(self):
-		pass
+	def fit(self, X_train, y_train):
+		'''
+		:param X_train:		type=df,	shape=(n_tweets, )
+		:param y_train: 	type=df,	shape=(n_tweets, )
+		'''
+		gc.enter_func()
+		print(y_train.shape)
+		X_train = self.prep.get_tweets_features(X_train)
+		y_train = y_train.values
+		self.model.fit(X_train, y_train)
 
-	@abstractmethod
-	def classify(self, X):
-		pass
 
-	@abstractmethod
-	def report(self, X, y):
-		pass
+	def predict(self, X):
+		gc.enter_func()
+		prep_X = self.prep.get_tweets_features(X)
+		return self.model.predict(prep_X)
+
+	def report(self, X, y, log=''):
+		gc.enter_func()
+		y_pred = self.predict(X)
+		if log:
+			print(log)
+		print(confusion_matrix(y, y_pred))
+		print(accuracy_score(y, y_pred))
