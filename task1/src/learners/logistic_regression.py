@@ -23,9 +23,3 @@ class LogisticReg(AbstractLearner):
 		X = self.prep.prep_tweets(X)
 		y_pred = self.model.predict(X)
 		return y_pred
-
-	def report(self, X, y):
-		gc.log()
-		y_pred = self.classify(X)
-		print(confusion_matrix(y, y_pred))
-		print(accuracy_score(y, y_pred))

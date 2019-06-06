@@ -65,9 +65,8 @@ def main():
 	for i, model in enumerate(models):
 		analyzer = LearnerAnalyzer(model, X_train, y_train)
 		analyzer.report()
-	# learners[i] = model(X_train, y_train)	# Training is done uon creation
-	# learners[i].report(X_train, y_train)
-	# learners[i].report(X_valid, y_valid)
+		# learners[i] = model(X_train, y_train)	# Training is done upon creation
+		# learners[i].report(X_test, y_test)
 
 
 if __name__ == '__main__':
