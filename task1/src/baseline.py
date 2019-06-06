@@ -1,7 +1,8 @@
 import string
 
 from sklearn import svm
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer,\
+	HashingVectorizer
 import matplotlib.pyplot as plt
 import numpy as np
 from bs4 import BeautifulSoup
@@ -22,8 +23,7 @@ class Baseline:
 	pat_test_a = r'[\w]*a[\w]*'
 	pat_test_e = r'[\w]*e[\w]*'
 	pat_test_o = r'[\w]*o[\w]*'
-	combined_pat = r'|'.join((pat1, pat2, pat3, pat_num, pat_ing, pat_test_a,
-							  pat_test_e, pat_test_o))
+	combined_pat = r'|'.join((pat1, pat2, pat3, pat_num, pat_ing))
 
 	def __init__(self, X_train, y_train):
 		'''
@@ -57,17 +57,21 @@ class Baseline:
 			X[i] = self.clean(tweet)
 			gc.iter()
 
+		# vectorizer = TfidfVectorizer()
 		vectorizer = CountVectorizer()
+		# vectorizer = HashingVectorizer(n_features=20)
+		# X_vecd = vectorizer.transform(X)
 		X_vecd = vectorizer.fit_transform(X)
 		print(X_vecd.shape)
-		print(vectorizer.get_feature_names())
+		print(X_vecd)
+		# print(vectorizer.get_feature_names())
 		return X_vecd.toarray()
 
 	def train(self):
 		gc.enter_func()
 		print(self.y_train)
 		self.model.fit(self.X_train, self.y_train)
-
+		gc.log('Done training')
 		# plt.boxplot(self.y_train)
 		# plt.show()
 
