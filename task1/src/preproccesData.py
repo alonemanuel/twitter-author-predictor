@@ -94,35 +94,43 @@ class TweetsPreProcessor:
 					all_mentions, labels)
 			self.most_common_lexemes = self.get_most_common_words(
 					proccesed_tweets,
-														 labels, 100)
+					labels, 100)
 
-		hashtags_for_person = [[0]* len(tweets) * 10]
+		hashtags_for_person = np.zeros((len(tweets), 10))
+		mentios_for_person = np.zeros((len(tweets), 10))
+		lexems_for_person = np.zeros((len(tweets), 10))
+
 		for index, tweet in enumerate(tweets):
 			for hashtag in all_hashtags[index]:
-				for i,person in enumerate(self.most_common_hashtags):
+				for i, person in enumerate(self.most_common_hashtags):
 					if hashtag in person:
-						hashtags_for_person[i][index] +=1
+						hashtags_for_person[index, i] += 1
 
-		data_from_tweets['hashtags 0'] = hashtags_for_person[0]
-		data_from_tweets['hashtags 1'] = hashtags_for_person[1]
-		data_from_tweets['hashtags 2'] = hashtags_for_person[2]
-		data_from_tweets['hashtags 3'] = hashtags_for_person[3]
-		data_from_tweets['hashtags 4'] = hashtags_for_person[4]
-		data_from_tweets['hashtags 5'] = hashtags_for_person[5]
-		data_from_tweets['hashtags 6'] = hashtags_for_person[6]
-		data_from_tweets['hashtags 7'] = hashtags_for_person[7]
-		data_from_tweets['hashtags 8'] = hashtags_for_person[8]
-		data_from_tweets['hashtags 9'] = hashtags_for_person[9]
+			for mention in all_mentions[index]:
+				for i, person in enumerate(self.most_common_mentions):
+					if mention in person:
+						mentios_for_person[index, i] += 1
+
+			for lexem in proccesed_tweets[index]:
+				for i, person in enumerate(self.most_common_lexemes):
+					if lexem in person:
+						lexems_for_person[index, i] += 1
+
+		for i in range(10):
+			name = 'hashtags %f' %i
+			data_from_tweets[name] = hashtags_for_person[:, i]
+
+			name = 'mentions %f' % i
+			data_from_tweets[name] = mentios_for_person[:, i]
+
+			name = 'lexems %f' % i
+			data_from_tweets[name] = lexems_for_person[:, i]
 
 
-
-
-
-
-		bow = self.vectorizer.transform(tweets).toarray()
-		features = np.column_stack((data_from_tweets.values, bow))
-		return features
-
+		# bow = self.vectorizer.transform(tweets).toarray()
+		# features = np.column_stack((data_from_tweets.values, bow))
+		# return features
+		return data_from_tweets.values
 
 	def normalize_lexical_words(self, tweet):
 		'''
@@ -225,8 +233,8 @@ class TweetsPreProcessor:
 		the mentions removed. list can be empty if no mentions found
 		"""
 		mentions = re.findall(
-			r"(?<=^|(?<=[^a-zA-Z0-9]))@([A-Za-z]+[A-Za-z0-9-_]+)",
-			tweet)
+				r"(?<=^|(?<=[^a-zA-Z0-9]))@([A-Za-z]+[A-Za-z0-9-_]+)",
+				tweet)
 
 		# remove mentions
 		for mention in mentions:
