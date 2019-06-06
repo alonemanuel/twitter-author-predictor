@@ -47,7 +47,7 @@ import os
 from sklearn.model_selection import train_test_split
 import numpy as np
 import pandas as pd
-from garcon import Garcon
+from task1.src.garcon import Garcon
 
 gc = Garcon()
 CSV_EXT = ".csv"
