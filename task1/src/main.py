@@ -22,8 +22,8 @@ def main():
 	X, y = prep.get_train_data()
 	X_train, y_train, X_test, y_test = prep.train_test_split(X, y)
 	# Different learning models
-	models = [LogisticReg]
-	# models = [DecisionTree, LogisticReg, KNN]
+	# models = [LogisticReg]
+	models = [DecisionTree, LogisticReg, KNN]
 	learners = [None, None, None]
 	for i, model in enumerate(models):
 		analyzer = LearnerAnalyzer(model, X_train, y_train)

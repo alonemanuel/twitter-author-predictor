@@ -22,7 +22,8 @@ class LearnerAnalyzer:
 		gc.enter_func()
 		gc.init_plt()
 		max_train_size = self.X_train.shape[0]
-		size_range = np.arange(5000, max_train_size, STEP_SIZE)
+		# size_range = np.arange(5000, max_train_size, STEP_SIZE)
+		size_range = np.arange(max_train_size, max_train_size+1)
 		train_accuracy = np.zeros(size_range.shape)
 		test_accuracy = np.zeros(size_range.shape)
 		h=None
