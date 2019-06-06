@@ -1,8 +1,8 @@
 from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 
-from garcon import Garcon
-from learners.abstract_learner import AbstractLearner
+from task1.src.garcon import Garcon
+from task1.src.learners.abstract_learner import AbstractLearner
 
 gc = Garcon()
 
@@ -19,7 +19,7 @@ class KNN(AbstractLearner):
 		self.model.fit(self.X_train, self.y_train)
 
 	def classify(self, X):
-		X = self.prep.prep_tweets(X)
+		X = self.prep.processTweets(X)
 		y_pred = self.model.predict(X)
 		return y_pred
 

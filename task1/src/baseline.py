@@ -10,7 +10,7 @@ import re
 from sklearn.svm import SVC
 from sklearn.linear_model import LinearRegression
 
-from src.garcon import Garcon
+from task1.src.garcon import Garcon
 
 gc = Garcon()
 
