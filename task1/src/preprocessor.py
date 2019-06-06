@@ -67,7 +67,7 @@ class Preprocessor:
 										  norm=None, analyzer='word')
 
 	def _count_vectorize(self, min_ngram=2, max_ngram=3,
-						 min_df=0.001, max_df=0.99 max_feat=10000,
+						 min_df=0.001, max_df=0.99, max_feat=10000,
 						 binary=False):
 		self.vectorizer = CountVectorizer(stop_words='english', analyzer='word',
 										  ngram_range=(min_ngram, max_ngram),
