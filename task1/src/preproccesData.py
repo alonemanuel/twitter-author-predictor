@@ -11,7 +11,7 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 import functools as ft
 import numpy as np
-import langdetect
+# import langdetect
 
 NUM_OF_CLASSES = 10
 
@@ -87,7 +87,7 @@ class TweetsPreProcessor:
 		data_from_tweets['Char count'] = char_count_per_tweet
 		# data_from_tweets['Language'] = lang_per_tweet
 
-		if (labels):
+		if labels is not None:
 			self.most_common_hashtags = self.get_most_common_words(
 					all_hashtags, labels)
 			self.most_common_mentions = self.get_most_common_words(
@@ -102,19 +102,16 @@ class TweetsPreProcessor:
 
 		for index, tweet in enumerate(tweets):
 			for hashtag in all_hashtags[index]:
-				for i, person in enumerate(self.most_common_hashtags):
-					if hashtag in person:
-						hashtags_for_person[index, i] += 1
+				for i, common_per_person in enumerate(self.most_common_hashtags):
+					hashtags_for_person[index, i] += self.count_word_in_list_of_tuples(common_per_person, hashtag)
 
 			for mention in all_mentions[index]:
-				for i, person in enumerate(self.most_common_mentions):
-					if mention in person:
-						mentios_for_person[index, i] += 1
+				for i, common_per_person in enumerate(self.most_common_mentions):
+					mentios_for_person[index, i] += self.count_word_in_list_of_tuples(common_per_person, mention)
 
 			for lexem in proccesed_tweets[index]:
-				for i, person in enumerate(self.most_common_lexemes):
-					if lexem in person:
-						lexems_for_person[index, i] += 1
+				for i, common_per_person in enumerate(self.most_common_lexemes):
+					lexems_for_person[index, i] += self.count_word_in_list_of_tuples(common_per_person, lexem)
 
 
 		for i in range(10):
@@ -129,10 +126,20 @@ class TweetsPreProcessor:
 
 		data_from_tweets.to_csv('testing_df_from_tweets.csv')
 
-		# bow = self.vectorizer.transform(tweets).toarray()
-		# features = np.column_stack((data_from_tweets.values, bow))
-		# return features
+		bow = self.vectorizer.transform(tweets).toarray()
+		features = np.column_stack((data_from_tweets.values, bow))
+		return features
 		return data_from_tweets.values
+
+	def count_word_in_list_of_tuples(self, lst, value):
+		"""
+
+		:return:
+		"""
+		for (word, times) in lst:
+			if word == value:
+				return 1
+		return 0
 
 	def normalize_lexical_words(self, tweet):
 		'''
