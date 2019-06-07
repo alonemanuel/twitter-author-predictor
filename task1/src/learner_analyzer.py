@@ -5,9 +5,6 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from task1.src.preprocess_data import DataPreProcessor
 
-
-
-
 gc = Garcon()
 TRAIN_RATIO = 0.85
 STEP_SIZE = 5000
@@ -17,10 +14,15 @@ class LearnerAnalyzer:
 	'''
 	Class for analyzing and reporting learners.
 	'''
+
+
 	def __init__(self, X, y):
 		pass
+
+
 	def start_reporting(self):
 		self.plot_heatmap()
+
 
 	def plot_heatmap(self):
 		pass

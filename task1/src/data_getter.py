@@ -1,16 +1,17 @@
-
-
 import os
-
 from sklearn.model_selection import train_test_split
 import pandas as pd
 
 CSV_EXT = ".csv"
-
-TRAIN_RATIO = 0.85
 DATA_DIR_PATH = 'tweets_data'
+TRAIN_RATIO = 0.85
+
 
 class DataGetter:
+	'''
+	Gets the data that we all rely on.
+	'''
+
 
 	def get_train_data(self):
 		'''
@@ -25,6 +26,7 @@ class DataGetter:
 		y = df['user']
 
 		return X, y
+
 
 	def train_test_split(self, X, y):
 		'''

@@ -1,11 +1,13 @@
 import time
 import inspect
-import numpy as np
 import matplotlib.pyplot as plt
 
-IMDIR = 'images/'
+IMDIR = 'Images/'
 
 class Garcon:
+	'''
+	Helps with your code - from debugging to plotting.
+	'''
 	first_gc = None
 
 	def __init__(self):
