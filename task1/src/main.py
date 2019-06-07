@@ -40,17 +40,30 @@ def main():
 
 	# vectorizer
 
-	pipeline = Pipeline([('vect', vectorizer),
-						 ('chi', SelectKBest(chi2, k=17000)),
-						 ('clf', LogisticRegression(solver='sag', penalty='l2',
-													tol=1e-5))])
+	# pipeline = Pipeline([('vect', vectorizer),
+	# 					 ('chi', SelectKBest(chi2, k=18000)),
+	# 					 ('clf', LogisticRegression(solver='sag', penalty='l2',
+	# 												tol=1e-5))])
+	#
+	classifier_f = open('classify-final-build.pickle', 'rb')
+	classifier = pickle.load(classifier_f)
+	classifier_f.close()
 	# fitting our model and save it in a pickle for later use
-	classifier = pipeline.fit(X_train, y_train)
+	# classifier = pipeline.fit(X_train, y_train)
+
+	# save_classifier = open('classify-final-build.pickle','wb')
+	# pickle.dump(classifier, save_classifier)
+	# save_classifier.close()
+	#
+	gc.log('saved pickle')
+
 	learner_wrapper.report_predictor(classifier, 'Pipeline', X_train, y_train)
 	learner_wrapper.report_predictor(classifier, 'Pipeline', X_test, y_test, is_test=True)
-	# classifier_f = open('pipeline_logreg.pickle', 'rb')
-	# classifier = pickle.load(classifier_f)
-	# classifier_f.close()
+
+	gc.log('Succeeded with pickle')
+
+
+
 	ytest = np.array(y_test)
 
 	models = {'Logistic Regression': LogisticRegression, 'Multinomial Naive Bayes':MultinomialNB, 'Random Forest':RandomForestClassifier}

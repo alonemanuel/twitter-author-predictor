@@ -4,7 +4,7 @@ import pandas as pd
 
 CSV_EXT = ".csv"
 DATA_DIR_PATH = 'tweets_data'
-TRAIN_RATIO = 0.85
+TRAIN_RATIO = 0.90
 
 
 class DataGetter:
