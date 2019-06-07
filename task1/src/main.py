@@ -1,6 +1,7 @@
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 from task1.src import learner_wrapper
 from task1.src.garcon import Garcon
@@ -51,18 +52,7 @@ def main():
 	# classifier_f.close()
 	ytest = np.array(y_test)
 
-	# pipe_wrap = LearnerWrapper(pipeline, prep, 'Pipeline')
-	# pipe_wrap.report(X_train, y_train)
-	# pipe_wrap.report(X_test, y_test, is_test=True)
-
-	# confusion matrix and classification report(precision, recall, F1-score)
-	# print(classification_report(y_train, classifier.predict(X_train)))
-	# print(classification_report(ytest, classifier.predict(X_test)))
-	# print(confusion_matrix(ytest, classifier.predict(X_test)))
-
-	# models = {'Logistic Regression': LogisticRegression, 'K-Nearest Neighbors': KNeighborsClassifier,
-	# 		  'Decision Trees Classifier': DecisionTreeClassifier}
-	models = {'Logistic Regression': LogisticRegression, 'Multinomial Naive Bayes':MultinomialNB}
+	models = {'Logistic Regression': LogisticRegression, 'Multinomial Naive Bayes':MultinomialNB, 'Random Forest':RandomForestClassifier}
 	learners = [None] * len(models)
 
 	i = 0
@@ -70,29 +60,13 @@ def main():
 		learners[i] = LearnerWrapper(model, prep, name)
 		i += 1
 
+
+
 	for learner in learners:
 		learner.fit(X_train, y_train)
 		learner.report(X_train, y_train)
 		learner.report(X_test, y_test, is_test=True)
 
-
-# save_classifier = open('pipeline_logreg.pickle','wb')
-# pickle.dump(classifier, save_classifier)
-# save_classifier.close()
-
-# KNN, Multinomial Naive Bayes, Linear SVC, and Random Forrest
-
-# Helps in preprocessing tasks
-# prep = Preprocessor()
-# X, y = prep.get_train_data()
-# X_train, y_train, X_test, y_test = prep.train_test_split(X, y)
-# # Different learning models
-# models = [LogisticReg]#, RandomForest, DecisionTree, LDA]#KNN
-# learners = [None, None, None]
-# for i, model in enumerate(models):
-# 	print("\n\nPerformance of " + str(model.__name__) + " model:\n\n")
-# 	analyzer = LearnerAnalyzer(model, X_train, y_train)
-# 	analyzer.report()
 
 if __name__ == '__main__':
 	main()

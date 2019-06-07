@@ -90,7 +90,31 @@ class Preprocessor:
 
 
 	def _get_common_hashtags(self):
-		pass
+		# hashtags_for_person = np.zeros((len(tweets), 10))
+		# mentios_for_person = np.zeros((len(tweets), 10))
+		# lexems_for_person = np.zeros((len(tweets), 10))
+		#
+		# for index, tweet in enumerate(tweets):
+		# 	for hashtag in all_hashtags[index]:
+		# 		for i, common_per_person in enumerate(
+		# 				self.most_common_hashtags):
+		# 			hashtags_for_person[
+		# 				index, i] += self.count_word_in_list_of_tuples(
+		# 				common_per_person, hashtag)
+		#
+		# 	for mention in all_mentions[index]:
+		# 		for i, common_per_person in enumerate(
+		# 				self.most_common_mentions):
+		# 			mentios_for_person[
+		# 				index, i] += self.count_word_in_list_of_tuples(
+		# 				common_per_person, mention)
+		#
+		# 	for lexem in proccesed_tweets[index]:
+		# 		for i, common_per_person in enumerate(self.most_common_lexemes):
+		# 			lexems_for_person[
+		# 				index, i] += self.count_word_in_list_of_tuples(
+		# 				common_per_person, lexem)
+			pass
 
 
 	def _get_common_mentions(self):
@@ -130,9 +154,9 @@ class Preprocessor:
 		'''
 		return pd.DataFrame()
 
-##########################################
-##########################################
-#
+#########################################
+#########################################
+
 # def processTweets(self, tweets, labels=None):
 # 	"""
 #     Gets the tweets, spits the data
@@ -372,4 +396,3 @@ class Preprocessor:
 # 	"""
 # 	links = re.findall(r"http\S+", tweet)
 # 	return re.sub(r"http\S+", "", tweet), links
-#                                                                                                                                                                                                                                                                                                                                                                                                                                                     
