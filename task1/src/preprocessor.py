@@ -50,7 +50,6 @@ class Preprocessor:
 		'''
 		# self._split_tweets_labels()
 		self._set_vectorizer()
-		self._extract_indicators()
 
 
 	def _split_tweets_labels(self):
@@ -83,48 +82,6 @@ class Preprocessor:
 										  max_features=max_feat, binary=binary)
 
 
-	def _extract_indicators(self):
-		self._get_common_hashtags()
-		self._get_common_mentions()
-		self._get_common_lexemes()
-
-
-	def _get_common_hashtags(self):
-		# hashtags_for_person = np.zeros((len(tweets), 10))
-		# mentios_for_person = np.zeros((len(tweets), 10))
-		# lexems_for_person = np.zeros((len(tweets), 10))
-		#
-		# for index, tweet in enumerate(tweets):
-		# 	for hashtag in all_hashtags[index]:
-		# 		for i, common_per_person in enumerate(
-		# 				self.most_common_hashtags):
-		# 			hashtags_for_person[
-		# 				index, i] += self.count_word_in_list_of_tuples(
-		# 				common_per_person, hashtag)
-		#
-		# 	for mention in all_mentions[index]:
-		# 		for i, common_per_person in enumerate(
-		# 				self.most_common_mentions):
-		# 			mentios_for_person[
-		# 				index, i] += self.count_word_in_list_of_tuples(
-		# 				common_per_person, mention)
-		#
-		# 	for lexem in proccesed_tweets[index]:
-		# 		for i, common_per_person in enumerate(self.most_common_lexemes):
-		# 			lexems_for_person[
-		# 				index, i] += self.count_word_in_list_of_tuples(
-		# 				common_per_person, lexem)
-			pass
-
-
-	def _get_common_mentions(self):
-		pass
-
-
-	def _get_common_lexemes(self):
-		pass
-
-
 	def get_tweets_features(self, new_tweets):
 		'''
 		Extracts features from tweets.
@@ -152,7 +109,94 @@ class Preprocessor:
 		:param tweets:	type=df,	shape=(n_tweets, )
 		:return: 		type=df,	shape=(n_tweets, n_indicators)
 		'''
-		return pd.DataFrame()
+		df = pd.DataFrame()
+		n_chars = []
+		n_words = []
+		n_hashtags = []
+		n_mentions = []
+		n_links = []
+		n_emojis = []
+
+		for tweet in tweets:
+			n_chars.append(self.get_n_chars(tweet))
+			n_words.append(self.get_n_words(tweet))
+			n_hashtags.append(self.get_n_hashtags(tweet))
+			n_mentions.append(self.get_n_mentions(tweet))
+			n_links.append(self.get_n_links(tweet))
+			n_emojis.append(self.get_n_emojis(tweet))
+
+		df['n_chars'] = n_chars
+		df['n_words'] = n_words
+		df['n_hashtags'] = n_hashtags
+		df['n_mentions'] = n_mentions
+		df['n_links'] = n_links
+		df['n_emojis'] = n_emojis
+		return df
+
+
+	def get_n_words(self, tweet):
+		'''
+		Return word count for tweet.
+		:param tweet:
+		:return:
+		'''
+		return len(tweet.split())
+
+
+	def get_n_chars(self, tweet):
+		'''
+		Returns the char count of the tweet (of all chars).
+		:return:
+		'''
+		return len(tweet)
+
+
+	def get_n_hashtags(self, tweet):
+		"""
+		Gets a tweet, return a list of it's hastags (no #) and a tweet with the
+		hastags removed. list can be empty if no hastags found
+		"""
+		hash_tags = re.findall(
+			r"(?<=^|(?<=[^a-zA-Z0-9-_\.]))#([A-Za-z]+[A-Za-z0-9-_]+)",
+			tweet)
+
+		return len(hash_tags)
+
+
+	def get_n_mentions(self, tweet):
+		"""
+		Gets a tweet, return a list of it's mentions (no @) and a tweet with
+		the mentions removed. list can be empty if no mentions found
+		"""
+		mentions = re.findall(
+			r"(?<=^|(?<=[^a-zA-Z0-9]))@([A-Za-z]+[A-Za-z0-9-_]+)",
+			tweet)
+		return len(mentions)
+
+
+	def get_n_links(self, tweet):
+		"""
+		Gets a tweet, return a list of it's links (full link) and a tweet with
+		the links removed. list can be empty if no links found
+		"""
+		links = re.findall(r"http\S+", tweet)
+		return len(links)
+
+
+	def get_n_emojis(self, tweet):
+		"""
+		Gets a tweet, return number of emojis in the tweet and a tweet with
+		the emojis removed.
+		"""
+		emoji_set = set()
+		number_of_emoji = 0
+		line = regex.findall(r'\X', tweet)
+		for word in line:
+			if any(char in emoji.UNICODE_EMOJI for char in word):
+				emoji_set.add(word)
+				number_of_emoji += 1
+
+		return number_of_emoji
 
 #########################################
 #########################################
@@ -328,71 +372,3 @@ class Preprocessor:
 #
 # 	return most_common
 #
-# def extractEmoji(self, tweet):
-# 	"""
-# 	Gets a tweet, return number of emojis in the tweet and a tweet with
-# 	the emojis removed.
-# 	"""
-# 	emoji_set = set()
-# 	number_of_emoji = 0
-# 	line = regex.findall(r'\X', tweet)
-# 	for word in line:
-# 		if any(char in emoji.UNICODE_EMOJI for char in word):
-# 			emoji_set.add(word)
-# 			number_of_emoji += 1
-#
-# 	# remove emojis
-# 	for emoji_type in emoji_set:
-# 		tweet = tweet.replace(emoji_type, '')
-# 	return tweet, number_of_emoji
-#
-# def get_word_count(self, tweet):
-# 	'''
-# 	Return word count for tweet.
-# 	:param tweet:
-# 	:return:
-# 	'''
-# 	return len(tweet.split())
-#
-# def get_char_count(self, tweet):
-# 	'''
-# 	Returns the char count of the tweet (of all chars).
-# 	:return:
-# 	'''
-# 	return len(tweet)
-#
-# def extractHashtags(self, tweet):
-# 	"""
-# 	Gets a tweet, return a list of it's hastags (no #) and a tweet with the
-# 	hastags removed. list can be empty if no hastags found
-# 	"""
-# 	hash_tags = re.findall(
-# 			r"(?<=^|(?<=[^a-zA-Z0-9-_\.]))#([A-Za-z]+[A-Za-z0-9-_]+)",
-# 			tweet)
-#
-# 	# remove hastags
-# 	for hash_tag in hash_tags:
-# 		tweet = tweet.replace("#" + hash_tag, '')
-# 	return tweet, hash_tags
-#
-# def extractMentions(self, tweet):
-# 	"""
-# 	Gets a tweet, return a list of it's mentions (no @) and a tweet with
-# 	the mentions removed. list can be empty if no mentions found
-# 	"""
-# 	mentions = re.findall(
-# 			r"(?<=^|(?<=[^a-zA-Z0-9]))@([A-Za-z]+[A-Za-z0-9-_]+)",
-# 			tweet)
-#
-# 	# remove mentions
-# 	for mention in mentions:
-# 		tweet = tweet.replace("@" + mention, '')
-# 	return tweet, mentions
-#
-# def exractLinks(self, tweet):
-# 	"""
-# 	Gets a tweet, return a list of it's links (full link) and a tweet with
-# 	the links removed. list can be empty if no links found
-# 	"""
-# 	links = re.findall(r"http\S+", tweet)
-# 	return re.sub(r"http\S+", "", tweet), links
