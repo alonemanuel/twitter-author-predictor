@@ -1,0 +1,401 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 1cm
+\rightmargin 2cm
+\bottommargin 1cm
+\headheight 1cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+IML (67577) Hackathon - Who Tweeted What?
+\end_layout
+
+\begin_layout Author
+Or Mizrahi, Daniel Levin, Shahar Nachum, Alon Emanuel
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\H}{\mathcal{H}}
+{\mathcal{H}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\qed}{\blacksquare}
+{\blacksquare}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\tpr}{\text{TPR}}
+{\text{TPR}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\p}{\mathbb{P}}
+{\mathbb{P}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\D}{\mathcal{D}}
+{\mathcal{D}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\fpr}{\text{FPR}}
+{\text{FPR}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\uneq}[1]{\underset{\left[#1\right]}{=}}
+{\underset{\left[#1\right]}{=}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\uniff}[1]{\underset{\left[#1\right]}{\iff}}
+{\underset{\left[#1\right]}{\iff}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\argmax}{\text{argmax}}
+{\text{argmax}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\argmin}{\text{argmin}}
+{\text{argmin}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\N}{\mathcal{N}}
+{\mathcal{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sign}{\text{sign}}
+{\text{sign}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\r}{\mathbb{R}}
+{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\norm}[1]{\left\Vert #1\right\Vert }
+{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\comdots}{,\dots,}
+{,\dots,}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\e}{\varepsilon}
+{\varepsilon}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Our Goal
+\end_layout
+
+\begin_layout Standard
+Our task was to implement a supervised learning algorithm for classifying
+ tweets into their appropriate authors.
+\end_layout
+
+\begin_layout Subsection*
+The Setting
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+As input
+\series default
+ we got ten data sets (.csv), each consisting of 
+\begin_inset Formula $\sim3200$
+\end_inset
+
+ tweets posted by a given public figure, e.g.
+ Donald Trump, Kim Kardashian etc.
+\end_layout
+
+\begin_layout Standard
+Tweets are given as strings, and the labels are integers from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $9$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+As output 
+\series default
+we returned a decision rule (=a hypothesis) that receives a tweet and outputs
+ a label potentially determining it's author.
+\end_layout
+
+\begin_layout Section*
+Our Work Process
+\end_layout
+
+\begin_layout Subsubsection*
+1.
+ Put Your Test-Set in a Vault
+\end_layout
+
+\begin_layout Standard
+To avoid data-snooping resulting in biased results, we start of by setting
+ our test-set aside.
+ It is untouched until the very last stage of the learning process, to be
+ used as an honest estimation for our generalized error.
+\end_layout
+
+\begin_layout Standard
+As a rule of thumb, the test-set was chosen to be 
+\begin_inset Formula $0.15\%$
+\end_inset
+
+ of the data given.
+\end_layout
+
+\begin_layout Subsubsection*
+2.
+ Set the Bar
+\end_layout
+
+\begin_layout Standard
+In order to improve ourselves and have some point of reference for our performan
+ce, we set up a naive baseline learner.
+\end_layout
+
+\begin_layout Standard
+It had poor results, but it had 
+\series bold
+some 
+\series default
+results, which was what we needed.
+\end_layout
+
+\begin_layout Standard
+The baseline learner used the Bag of Words method to vectorize each tweet,
+ and suffered from large variance, resulting in a generalization accuracy
+ of 
+\begin_inset Formula $\sim0.2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+3.
+ Extract Features
+\end_layout
+
+\begin_layout Standard
+Since the data is raw text, we had to manually extract features out of it.
+ To help us decide on what features we want to include, we observed the
+ data and understood its behavior from the birds eye.
+\end_layout
+
+\begin_layout Standard
+We found that a specific implementation of Bag of Words, with specific values
+ given to its parameters.
+\end_layout
+
+\begin_layout Subsubsection*
+4.
+ Select Your Models
+\end_layout
+
+\begin_layout Standard
+We tried a lot of models.
+\end_layout
+
+\begin_layout Standard
+We played with each model's knob to find a sweet spot between the time complexit
+y and the model performance.
+ Our final contestants were Logistic Regression, Random Forest, Multinomial
+ Naive Bayes and
+\end_layout
+
+\begin_layout Standard
+On the other hand, we noticed that using a pipeline over these models made
+ them even more robust and accurate.
+ So eventually we went with Linear SVC pipelined.
+\end_layout
+
+\begin_layout Section*
+The Results
+\end_layout
+
+\begin_layout Standard
+These are the results per classifier (train + test error), in descending
+ order:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename E:/hack2/task1/src/Images/MultinomialNaiveBayes_trainset.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename E:/hack2/task1/src/Images/MultinomialNaiveBayes_testset.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename E:/hack2/task1/src/Images/LogisticRegression_trainset.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename E:/hack2/task1/src/Images/Pipeline_testset.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename E:/hack2/task1/src/Images/Pipeline_trainset.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename E:/hack2/task1/src/Images/Pipeline_testset.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
